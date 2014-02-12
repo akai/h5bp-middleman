@@ -4,14 +4,11 @@ Slim::Engine.set_default_options pretty: true, disable_escape: true
 # Compass
 ###
 
-# Susy grids in Compass
-# First: gem install susy
-# require 'susy'
-
 # Change Compass configuration
-# compass_config do |config|
-#   config.output_style = :compact
-# end
+compass_config do |config|
+  config.line_comments = false
+  config.output_style = :compact
+end
 
 ###
 # Page options, layouts, aliases and proxies
@@ -30,14 +27,15 @@ Slim::Engine.set_default_options pretty: true, disable_escape: true
 #   page "/admin/*"
 # end
 
-# Proxy (fake) files
-# page "/this-page-has-no-template.html", :proxy => "/template-file.html" do
-#   @which_fake_page = "Rendering a fake page with a variable"
-# end
+# Proxy pages (http://middlemanapp.com/dynamic-pages/)
+# proxy "/this-page-has-no-template.html", "/template-file.html", :proxy => {
+#   :which_fake_page => "Rendering a fake page with a variable" }
 
 ###
 # Helpers
 ###
+
+activate :livereload
 
 # Automatic image dimensions on image_tag helper
 # activate :automatic_image_sizes
@@ -49,6 +47,7 @@ Slim::Engine.set_default_options pretty: true, disable_escape: true
 #   end
 # end
 
+# set :build_dir, 'build'
 set :css_dir, 'css'
 set :js_dir, 'js'
 set :images_dir, 'img'
